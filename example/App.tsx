@@ -1,20 +1,24 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { WebView, WebViewProps } from "expo-web-view";
+import { Text, useWindowDimensions } from "react-native";
 
-import * as ExpoWebView from 'expo-web-view';
+type AType = WebViewProps;
 
 export default function App() {
+  // const aVar: AType = {};
+  const windowWidth = useWindowDimensions().width;
+
   return (
-    <View style={styles.container}>
-      <Text>{ExpoWebView.hello()}</Text>
-    </View>
+    <WebView
+      style={{
+        width: windowWidth,
+        height: 500,
+        backgroundColor: "rgba(0,0,0,0.6)",
+        alignSelf: "center",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <Text style={{ fontSize: 35 }}>A text inside a view</Text>
+    </WebView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
